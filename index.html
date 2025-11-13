@@ -1,0 +1,736 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Plan Descanso — Suscripción de colchones sin sorpresas</title>
+  <meta name="description" content="Colchón nuevo cada 2 años desde 10 €/mes. Suscripción de colchones para toda la familia, con envío, retirada del viejo y renovación automática incluida.">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#f7f4ef;          /* beige cálido suave */
+      --bg-light:#fcfaf6;
+      --ink:#111111;         /* negro/graphite */
+      --muted:#666666;
+      --accent:#2f7dd1;      /* azul calma */
+      --accent-soft:#e2efff;
+      --accent-alt:#46a27b;  /* verde relax */
+      --border:#e0ddd6;
+      --radius:18px;
+      --shadow:0 12px 35px rgba(0,0,0,.07);
+      --max:1120px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+      color:var(--ink);
+      background:var(--bg);
+    }
+    a{text-decoration:none;color:inherit}
+    img{max-width:100%;display:block}
+    .wrap{max-width:var(--max);margin:auto;padding:0 20px}
+    header{
+      position:sticky;top:0;z-index:20;
+      background:rgba(252,250,246,0.96);
+      backdrop-filter:blur(10px);
+      border-bottom:1px solid var(--border);
+    }
+    .topbar{
+      background:var(--accent);
+      color:#fff;
+      font-size:14px;
+    }
+    .topbar .wrap{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:10px;
+      padding:6px 20px;
+      text-align:center;
+    }
+    .nav{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:10px 0;
+    }
+    .logo{
+      font-weight:800;
+      letter-spacing:.04em;
+      font-size:18px;
+    }
+    .logo span{
+      display:block;
+      font-weight:400;
+      font-size:10px;
+      text-transform:uppercase;
+      letter-spacing:.18em;
+      color:var(--muted);
+    }
+    nav.menu{
+      display:flex;
+      gap:18px;
+      font-size:14px;
+    }
+    nav.menu a{
+      color:var(--muted);
+    }
+    nav.menu a:hover{
+      color:var(--ink);
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      padding:10px 18px;
+      border-radius:999px;
+      font-size:14px;
+      font-weight:600;
+      border:1px solid transparent;
+      cursor:pointer;
+      white-space:nowrap;
+    }
+    .btn-dark{
+      background:var(--ink);
+      color:#fff;
+    }
+    .btn-light{
+      background:#fff;
+      color:var(--ink);
+      border-color:var(--ink);
+    }
+    .btn-ghost{
+      background:transparent;
+      color:var(--ink);
+      border-color:var(--border);
+    }
+    .hero{
+      padding:40px 0 50px;
+      background:radial-gradient(circle at top left, #ffffff 0, #f7f4ef 50%, #f3efe7 100%);
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:32px;
+      align-items:center;
+    }
+    .kicker{
+      font-size:11px;
+      text-transform:uppercase;
+      letter-spacing:.18em;
+      color:var(--accent-alt);
+      margin-bottom:6px;
+      font-weight:700;
+    }
+    .hero h1{
+      margin:0 0 10px;
+      font-size:40px;
+      line-height:1.05;
+    }
+    .hero p{
+      margin:0 0 18px;
+      color:var(--muted);
+      font-size:16px;
+    }
+    .hero-ctas{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      align-items:center;
+      margin-bottom:10px;
+    }
+    .hero-note{
+      font-size:12px;
+      color:var(--muted);
+    }
+    .hero-card{
+      background:#fff;
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:18px;
+      border:1px solid var(--border);
+    }
+    .hero-card-header{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-bottom:10px;
+      font-size:13px;
+    }
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      padding:4px 10px;
+      border-radius:999px;
+      font-size:11px;
+      background:var(--accent-soft);
+      color:var(--accent);
+      font-weight:600;
+    }
+    .badge-dot{
+      width:6px;height:6px;border-radius:999px;background:var(--accent);
+    }
+    .hero-prices{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:10px;
+      margin-top:10px;
+      font-size:13px;
+    }
+    .hero-price{
+      background:var(--bg-light);
+      border-radius:12px;
+      padding:8px;
+      border:1px solid var(--border);
+    }
+    .hero-price strong{display:block;font-size:14px;margin-bottom:2px}
+    .section{
+      padding:40px 0;
+    }
+    .section-header{
+      margin-bottom:20px;
+    }
+    .section-header h2{
+      margin:4px 0 0;
+      font-size:24px;
+    }
+    .muted{color:var(--muted);font-size:14px;}
+    .steps{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+    }
+    .step{
+      background:#fff;
+      border-radius:16px;
+      padding:16px;
+      border:1px solid var(--border);
+    }
+    .step-num{
+      width:26px;height:26px;border-radius:999px;
+      background:var(--accent-soft);
+      color:var(--accent);
+      display:flex;align-items:center;justify-content:center;
+      font-size:13px;font-weight:700;
+      margin-bottom:8px;
+    }
+    .step h3{
+      margin:0 0 6px;
+      font-size:15px;
+    }
+    .plans-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+    }
+    .plan{
+      background:#fff;
+      border-radius:18px;
+      padding:18px;
+      border:1px solid var(--border);
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+    .plan.highlight{
+      border-color:var(--accent);
+      box-shadow:var(--shadow);
+      position:relative;
+    }
+    .plan-badge{
+      position:absolute;
+      top:10px;right:10px;
+      background:var(--accent);
+      color:#fff;
+      font-size:10px;
+      padding:3px 8px;
+      border-radius:999px;
+      text-transform:uppercase;
+      letter-spacing:.12em;
+    }
+    .plan h3{
+      margin:0;
+      font-size:18px;
+    }
+    .plan-price{
+      font-size:20px;
+      font-weight:800;
+    }
+    .plan-price span{
+      font-size:13px;
+      font-weight:400;
+      color:var(--muted);
+    }
+    .plan ul{
+      list-style:none;
+      padding:0;
+      margin:6px 0 0;
+      font-size:13px;
+      color:var(--muted);
+    }
+    .plan ul li{
+      margin-bottom:4px;
+    }
+    .tick::before{
+      content:"✓ ";
+      color:var(--accent-alt);
+      font-weight:700;
+    }
+    .benefits-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+    }
+    .benefit{
+      background:#fff;
+      border-radius:16px;
+      padding:16px;
+      border:1px solid var(--border);
+      font-size:14px;
+    }
+    .benefit h3{
+      margin:0 0 6px;
+      font-size:15px;
+    }
+    .tag{
+      display:inline-block;
+      font-size:11px;
+      padding:3px 8px;
+      border-radius:999px;
+      background:var(--accent-soft);
+      color:var(--accent);
+      margin-bottom:6px;
+    }
+    .reviews-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+    }
+    .review{
+      background:#fff;
+      border-radius:16px;
+      padding:14px;
+      border:1px solid var(--border);
+      font-size:13px;
+    }
+    .review strong{
+      display:block;
+      margin-bottom:4px;
+    }
+    .faq-grid{
+      display:grid;
+      grid-template-columns:1.2fr .8fr;
+      gap:24px;
+      align-items:flex-start;
+    }
+    details{
+      background:#fff;
+      border-radius:14px;
+      padding:12px 14px;
+      border:1px solid var(--border);
+      font-size:14px;
+      margin-bottom:8px;
+    }
+    summary{
+      cursor:pointer;
+      font-weight:600;
+      list-style:none;
+    }
+    summary::-webkit-details-marker{display:none}
+    details p{
+      margin:8px 0 0;
+      color:var(--muted);
+      font-size:13px;
+    }
+    .about{
+      background:#fff;
+      border-radius:16px;
+      padding:18px;
+      border:1px solid var(--border);
+      font-size:14px;
+    }
+    .contact-grid{
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:24px;
+      align-items:flex-start;
+    }
+    form{
+      background:#fff;
+      border-radius:16px;
+      padding:18px;
+      border:1px solid var(--border);
+      font-size:14px;
+    }
+    label{
+      display:block;
+      margin-bottom:12px;
+      font-size:13px;
+    }
+    input,textarea{
+      width:100%;
+      padding:8px 10px;
+      border-radius:10px;
+      border:1px solid var(--border);
+      font-family:inherit;
+      font-size:13px;
+      margin-top:4px;
+    }
+    textarea{min-height:90px;resize:vertical}
+    footer{
+      border-top:1px solid var(--border);
+      margin-top:30px;
+      padding:14px 0 20px;
+      font-size:12px;
+      color:var(--muted);
+    }
+    .footer-flex{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    .whatsapp-fab{
+      position:fixed;
+      right:18px;
+      bottom:18px;
+      width:52px;
+      height:52px;
+      border-radius:999px;
+      background:#25D366;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:#fff;
+      font-size:26px;
+      box-shadow:0 10px 25px rgba(0,0,0,.2);
+      z-index:30;
+    }
+    .whatsapp-fab span{position:absolute;left:-9999px}
+    @media (max-width:960px){
+      nav.menu{display:none;}
+      .hero-grid{grid-template-columns:1fr}
+      .steps{grid-template-columns:1fr}
+      .plans-grid{grid-template-columns:1fr}
+      .benefits-grid{grid-template-columns:1fr}
+      .reviews-grid{grid-template-columns:1fr}
+      .faq-grid{grid-template-columns:1fr}
+      .contact-grid{grid-template-columns:1fr}
+      .hero h1{font-size:32px;}
+    }
+  </style>
+</head>
+<body>
+
+<!-- BOTÓN FLOTANTE WHATSAPP -->
+<a class="whatsapp-fab" href="https://wa.me/34XXXXXXXXX" target="_blank" rel="noopener">
+  <!-- Cambia 34XXXXXXXXX por tu número en formato internacional -->
+  💬
+  <span>Hablar por WhatsApp</span>
+</a>
+
+<!-- BARRA SUPERIOR PROMO -->
+<div class="topbar">
+  <div class="wrap">
+    <strong>Colchón nuevo cada 2 años</strong> · Desde 10 €/mes · Sin gastos sorpresa
+  </div>
+</div>
+
+<header>
+  <div class="wrap nav">
+    <div class="logo">
+      Plan Descanso
+      <span>Suscripción de colchones</span>
+      <!-- Si tienes logo en imagen:
+      <img src="ruta-a-tu-logo.png" alt="Plan Descanso" style="height:32px">
+      -->
+    </div>
+    <nav class="menu">
+      <a href="#como-funciona">Cómo funciona</a>
+      <a href="#planes">Planes y precios</a>
+      <a href="#beneficios">Beneficios</a>
+      <a href="#opiniones">Opiniones</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a class="btn btn-dark" href="https://wa.me/34XXXXXXXXX" target="_blank" rel="noopener">Hablar por WhatsApp</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="kicker">Suscripción de colchones</div>
+      <h1>Colchón nuevo cada 2 años desde 10 €/mes.</h1>
+      <p>Plan Descanso te permite renovar los colchones de tu casa sin grandes pagos iniciales, sin sorpresas y con todo incluido: envío, retirada del viejo y renovación automática.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-dark" href="https://wa.me/34XXXXXXXXX" target="_blank" rel="noopener">Quiero info por WhatsApp</a>
+        <a class="btn btn-light" href="#planes">Ver planes desde 10 €/mes</a>
+      </div>
+      <div class="hero-note">
+        Permanencia 24 meses · Ideal para familias que quieren controlar el gasto y dormir siempre sobre un colchón en buen estado.
+      </div>
+    </div>
+    <div>
+      <div class="hero-card">
+        <div class="hero-card-header">
+          <div>
+            <strong>Empieza hoy sin desembolsar 500€ de golpe.</strong><br>
+            <span class="muted">Elige tu plan según el tamaño y nivel de confort.</span>
+          </div>
+          <div class="badge">
+            <span class="badge-dot"></span> Renovación incluida
+          </div>
+        </div>
+        <div class="hero-prices">
+          <div class="hero-price">
+            <strong>Básico</strong>
+            10 €/mes
+            <span>Descanso cómodo para dormitorios secundarios.</span>
+          </div>
+          <div class="hero-price">
+            <strong>Premium</strong>
+            15 €/mes
+            <span>Más confort para tu colchón principal.</span>
+          </div>
+          <div class="hero-price">
+            <strong>Familiar</strong>
+            20 €/mes
+            <span>Para hogares con varios colchones a renovar.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CÓMO FUNCIONA -->
+<section class="section" id="como-funciona">
+  <div class="wrap">
+    <div class="section-header">
+      <div class="kicker">Cómo funciona</div>
+      <h2>Suscríbete una vez. Renueva colchón cada 2 años.</h2>
+      <p class="muted">Pensado para familias y parejas que quieren un descanso óptimo sin descuadrar el presupuesto.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Elige tu plan</h3>
+        <p>Escoge entre Básico, Premium o Familiar según el tamaño, número de colchones y nivel de confort que necesitéis.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Recibe tu colchón</h3>
+        <p>Te lo llevamos a casa, lo subimos donde lo necesites y retiramos tu colchón viejo para que no tengas que preocuparte por nada.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Renovación automática cada 2 años</h3>
+        <p>A los 24 meses te avisamos, programamos la entrega y te renovamos el colchón dentro de tu plan, manteniendo tu cuota mensual.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PLANES -->
+<section class="section" id="planes">
+  <div class="wrap">
+    <div class="section-header">
+      <div class="kicker">Planes y precios</div>
+      <h2>Elige el plan que mejor encaja con tu hogar.</h2>
+      <p class="muted">Permanencia 24 meses. Envío, retirada del viejo y renovación cada 2 años incluidos en todos los planes.</p>
+    </div>
+    <div class="plans-grid">
+      <!-- Básico -->
+      <div class="plan">
+        <h3>Plan Básico</h3>
+        <div class="plan-price">10 €/mes <span> · Desde</span></div>
+        <ul>
+          <li class="tick">Ideal para dormitorios secundarios o colchones de uso ocasional.</li>
+          <li class="tick">Renovación automática cada 2 años.</li>
+          <li class="tick">Entrega en domicilio y subida incluida.</li>
+          <li class="tick">Retirada del colchón viejo.</li>
+        </ul>
+        <a class="btn btn-ghost" href="https://wa.me/34XXXXXXXXX" target="_blank" rel="noopener">Quiero este plan</a>
+      </div>
+      <!-- Premium -->
+      <div class="plan highlight">
+        <div class="plan-badge">Más elegido</div>
+        <h3>Plan Premium</h3>
+        <div class="plan-price">15 €/mes <span> · Desde</span></div>
+        <ul>
+          <li class="tick">Pensado para el colchón principal de la casa.</li>
+          <li class="tick">Mayor confort y mejores materiales.</li>
+          <li class="tick">Renovación automática cada 2 años incluida.</li>
+          <li class="tick">Envío, subida y retirada del viejo sin coste extra.</li>
+        </ul>
+        <a class="btn btn-dark" href="https://wa.me/34XXXXXXXXX" target="_blank" rel="noopener">Contratar Premium</a>
+      </div>
+      <!-- Familiar -->
+      <div class="plan">
+        <h3>Plan Familiar</h3>
+        <div class="plan-price">20 €/mes <span> · Desde</span></div>
+        <ul>
+          <li class="tick">Para hogares con varios colchones a renovar.</li>
+          <li class="tick">Posibilidad de coordinar varias renovaciones.</li>
+          <li class="tick">Renovación automática cada 2 años por colchón.</li>
+          <li class="tick">Todo incluido: envío, subida y retirada.</li>
+        </ul>
+        <a class="btn btn-ghost" href="https://wa.me/34XXXXXXXXX" target="_blank" rel="noopener">Hablar sobre el plan Familiar</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFICIOS -->
+<section class="section" id="beneficios">
+  <div class="wrap">
+    <div class="section-header">
+      <div class="kicker">Beneficios</div>
+      <h2>Controla tu gasto y duerme siempre sobre un colchón en condiciones.</h2>
+    </div>
+    <div class="benefits-grid">
+      <div class="benefit">
+        <div class="tag">Menos desembolso inicial</div>
+        <h3>Paga en cuota mensual, no de golpe.</h3>
+        <p>Evita soltar 400–1.000 € de una vez. Con Plan Descanso conviertes la compra del colchón en una cuota mensual cómoda.</p>
+      </div>
+      <div class="benefit">
+        <div class="tag">Siempre colchón nuevo</div>
+        <h3>Renovaciones programadas cada 2 años.</h3>
+        <p>Así no alargas un colchón 10 o 12 años. Tu descanso se mantiene en un nivel óptimo durante la vida útil del servicio.</p>
+      </div>
+      <div class="benefit">
+        <div class="tag">Sin sorpresas</div>
+        <h3>Sin letra pequeña ni gastos ocultos.</h3>
+        <p>Envío, retirada del viejo y renovación cada 2 años están incluidos en tu cuota. Sabes lo que pagas, mes a mes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OPINIONES -->
+<section class="section" id="opiniones">
+  <div class="wrap">
+    <div class="section-header">
+      <div class="kicker">Opiniones</div>
+      <h2>Lo que dicen las familias que ya usan Plan Descanso.</h2>
+    </div>
+    <div class="reviews-grid">
+      <div class="review">
+        <strong>Laura y Miguel · Málaga</strong>
+        “Nos acabábamos de mudar y no queríamos gastar 800 € en colchones de golpe. Con la cuota mensual ha sido mucho más llevadero.”
+      </div>
+      <div class="review">
+        <strong>Sara · Valencia</strong>
+        “Saber que dentro de 2 años me renuevan el colchón sin tener que preocuparme de nada me da mucha tranquilidad.”
+      </div>
+      <div class="review">
+        <strong>Carlos · Madrid</strong>
+        “El servicio de entrega y retirada del viejo fue rápido. Todo claro desde el principio, sin sorpresas.”
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ + SOBRE NOSOTROS -->
+<section class="section" id="faq">
+  <div class="wrap faq-grid">
+    <div>
+      <div class="section-header">
+        <div class="kicker">FAQ</div>
+        <h2>Preguntas frecuentes.</h2>
+      </div>
+
+      <details open>
+        <summary>¿Por qué hay permanencia de 24 meses?</summary>
+        <p>Porque incluimos el colchón, la logística, la retirada del viejo y la renovación a los 2 años. La permanencia nos permite ofrecerte una cuota mensual ajustada sin cobrarte un gran pago inicial.</p>
+      </details>
+
+      <details>
+        <summary>¿Tengo que pagar una fianza antes de recibir el colchón?</summary>
+        <p>No. El objetivo de Plan Descanso es que no tengas que hacer un gran desembolso inicial. Te explicamos las condiciones claras antes de empezar, pero no trabajamos con fianzas sorpresa.</p>
+      </details>
+
+      <details>
+        <summary>¿Qué pasa a los 2 años?</summary>
+        <p>Te contactamos para programar la renovación. Llevamos el colchón nuevo, retiramos el anterior y sigues con tu misma cuota mensual dentro del plan contratado.</p>
+      </details>
+
+      <details>
+        <summary>¿La retirada del colchón viejo está incluida?</summary>
+        <p>Sí, en todos los planes. Nos llevamos el colchón antiguo para que no tengas que preocuparte por dónde dejarlo.</p>
+      </details>
+
+      <details>
+        <summary>¿En qué zonas ofrecéis el servicio?</summary>
+        <p>Empezamos en España peninsular. Si estás en otra zona, puedes escribirnos por WhatsApp y vemos opciones contigo.</p>
+      </details>
+    </div>
+
+    <div class="about" id="sobre-nosotros">
+      <div class="kicker">Sobre nosotros</div>
+      <h2>Plan Descanso nace de gente que lleva años viviendo el mundo del colchón.</h2>
+      <p>Detrás de Plan Descanso hay un equipo que conoce bien el sector del descanso y sabe lo que supone cambiar colchones cada pocos años: buscar modelo, comparar precios, esperar ofertas, gestionar el viejo…</p>
+      <p>Queríamos una solución simple para familias con presupuesto ajustado, que quieren dormir bien pero no pueden ni quieren soltar 500 € de golpe cada vez que toca renovar.</p>
+      <p>Por eso hemos creado un modelo de suscripción claro, sin letra pequeña, pensado para acompañarte muchos años.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section class="section" id="contacto">
+  <div class="wrap">
+    <div class="section-header">
+      <div class="kicker">Contacto</div>
+      <h2>¿Tienes dudas? Hablemos de tu descanso.</h2>
+      <p class="muted">Te ayudamos a elegir el plan adecuado según tu casa, tu presupuesto y tus colchones actuales.</p>
+    </div>
+    <div class="contact-grid">
+      <div>
+        <p><strong>WhatsApp:</strong> <a href="https://wa.me/34605353034" target="_blank" rel="noopener">+34 XXX XX XX XX</a></p>
+        <p><strong>Teléfono:</strong> +34 6025 35 30 34</p>
+        <p><strong>Email:</strong> <a href="mailto:info@plandescanso.com">info@plandescanso.com</a></p>
+        <p>Horario de atención: Lunes a viernes de 9:00 a 19:00.</p>
+        <a class="btn btn-dark" href="https://wa.me/3605353034" target="_blank" rel="noopener">Escríbenos por WhatsApp</a>
+      </div>
+
+      <form>
+        <h3>Envíanos tu consulta</h3>
+        <label>
+          Nombre
+          <input type="text" name="nombre" placeholder="Tu nombre">
+        </label>
+        <label>
+          Teléfono
+          <input type="tel" name="telefono" placeholder="Tu número de contacto">
+        </label>
+        <label>
+          Mensaje
+          <textarea name="mensaje" placeholder="Cuéntanos qué colchones quieres renovar o qué dudas tienes."></textarea>
+        </label>
+        <button type="submit" class="btn btn-dark">Enviar (ejemplo sin enviar)</button>
+        <p class="muted">* Este formulario es solo de ejemplo. Podemos conectarlo más adelante con tu correo o herramienta favorita.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-flex">
+    <div>© Plan Descanso · 2025</div>
+    <div>
+      <a href="#">Aviso legal</a> ·
+      <a href="#">Política de privacidad</a> ·
+      <a href="#">Política de cookies</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
